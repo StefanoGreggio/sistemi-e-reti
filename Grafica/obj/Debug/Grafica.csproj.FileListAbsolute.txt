@@ -20,3 +20,13 @@ C:\Users\Sessano\Desktop\Grafica\obj\Debug\Grafica.csproj.CoreCompileInputs.cach
 C:\Users\Sessano\Desktop\Grafica\obj\Debug\Grafica.exe
 C:\Users\Sessano\Desktop\Grafica\obj\Debug\Grafica.pdb
 C:\Users\Sessano\Desktop\Grafica\obj\Debug\Grafica.csproj.SuggestedBindingRedirects.cache
+C:\Users\Sessano\source\repos\Grafica\bin\Debug\Grafica.exe.config
+C:\Users\Sessano\source\repos\Grafica\bin\Debug\Grafica.exe
+C:\Users\Sessano\source\repos\Grafica\bin\Debug\Grafica.pdb
+C:\Users\Sessano\source\repos\Grafica\obj\Debug\Grafica.csproj.AssemblyReference.cache
+C:\Users\Sessano\source\repos\Grafica\obj\Debug\Grafica.Form1.resources
+C:\Users\Sessano\source\repos\Grafica\obj\Debug\Grafica.Properties.Resources.resources
+C:\Users\Sessano\source\repos\Grafica\obj\Debug\Grafica.csproj.GenerateResource.cache
+C:\Users\Sessano\source\repos\Grafica\obj\Debug\Grafica.csproj.CoreCompileInputs.cache
+C:\Users\Sessano\source\repos\Grafica\obj\Debug\Grafica.exe
+C:\Users\Sessano\source\repos\Grafica\obj\Debug\Grafica.pdb

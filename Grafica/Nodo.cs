@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Grafica
 {
     internal class Nodo
-    {
+    {        
         static int index;
         string nome;
         List<Arco> archi;
