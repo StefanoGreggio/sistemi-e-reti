@@ -34,7 +34,7 @@
             // 
             // btn_cerchio
             // 
-            this.btn_cerchio.Location = new System.Drawing.Point(625, 414);
+            this.btn_cerchio.Location = new System.Drawing.Point(691, 459);
             this.btn_cerchio.Name = "btn_cerchio";
             this.btn_cerchio.Size = new System.Drawing.Size(75, 23);
             this.btn_cerchio.TabIndex = 0;
@@ -44,7 +44,7 @@
             // 
             // btn_linea
             // 
-            this.btn_linea.Location = new System.Drawing.Point(706, 414);
+            this.btn_linea.Location = new System.Drawing.Point(772, 459);
             this.btn_linea.Name = "btn_linea";
             this.btn_linea.Size = new System.Drawing.Size(82, 24);
             this.btn_linea.TabIndex = 1;
@@ -56,7 +56,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(866, 495);
             this.Controls.Add(this.btn_linea);
             this.Controls.Add(this.btn_cerchio);
             this.Name = "Form1";

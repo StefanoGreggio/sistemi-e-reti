@@ -18,5 +18,9 @@ namespace Grafica
             this.a = a;
             this.costo = costo;
         }
+
+        public string Da { get => da; set => da = value; }
+        public string A { get => a; set => a = value; }
+        public int Costo { get => costo; set => costo = value; }
     }
 }

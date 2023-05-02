@@ -14,8 +14,10 @@ namespace Grafica
     {
         Graphics foglio;
         Pen penna;
+        Label l;
         List<Point> centri;
         List<Punti> linee;
+        List<Riga> righe;
         Point p1;
         Point p2;
         Grafo grafo;
@@ -36,6 +38,7 @@ namespace Grafica
             buttonCerchio = true;
             buttonLinea = false;
             linee = new List<Punti>();
+            righe = new List<Riga>();
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
@@ -46,23 +49,23 @@ namespace Grafica
                 foreach (Point p in centri)
                 {
                     foglio.DrawEllipse(penna, p.X, p.Y, 1, 1);
-                    foglio.DrawEllipse(penna, p.X - raggio, p.Y - raggio, raggio * 2, raggio * 2);
+                    foglio.DrawEllipse(penna, p.X - raggio, p.Y - raggio, raggio * 2, raggio * 2);                    
                 }
                 for (int i = 0; i < linee.Count; i++)
                 {
                     foglio.DrawLine(penna, linee[i].P1, linee[i].P2);
                 }
             }
-
         }
 
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
             
-            Nodo n;
             bool distanzaOK = true;
             if (buttonCerchio)
             {
+                Nodo n;
+                l = new Label();                
                 if (centri.Count != 0 && !centri.Contains(e.Location))
                 {
                     for (int i = 0; i < centri.Count; i++)
@@ -76,6 +79,7 @@ namespace Grafica
                     {
                         centri.Add(e.Location);
                         n = new Nodo(e.Location);
+                        ScriviLabel(n, e);
                         grafo.Add(n);
                     }
                 }
@@ -83,7 +87,9 @@ namespace Grafica
                 {
                     centri.Add(e.Location);
                     n = new Nodo(e.Location);
+                    ScriviLabel(n, e);
                     grafo = new Grafo(n);
+                   
                 }
             }
             else if (buttonLinea == true)
@@ -96,7 +102,7 @@ namespace Grafica
                         {
                             p2.X = centri[i].X;
                             p2.Y = centri[i].Y;
-                            linee.Add(new Punti(p1, p2));
+                            linee.Add(new Punti(p1, p2, new Riga(new Nodo(p1).Nome, new Nodo(p2).Nome, (int)Math.Sqrt(Math.Pow(p2.X - p1.X, 2) + Math.Pow(p2.Y - p1.Y, 2)))));                            
                             p1 = p2;
                         }
                     }
@@ -141,6 +147,16 @@ namespace Grafica
                 buttonCerchio = false;
                 buttonLinea = true;
             }
+        }
+
+        void ScriviLabel(Nodo n, MouseEventArgs e)
+        {
+            l.Text = n.Nome;
+            l.Location = e.Location;
+            l.AutoSize = true;
+            l.Font = new Font("Calibri", 12);
+            l.ForeColor = Color.Black;            
+            this.Controls.Add(l);
         }
     }
 }

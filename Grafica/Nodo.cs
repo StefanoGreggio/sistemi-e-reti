@@ -21,10 +21,6 @@ namespace Grafica
             index++;
             nome = index.ToString();
         }
-        /*public Nodo(string nome) : this()
-        {
-            this.nome += nome;
-        }*/
 
         public string Nome { get => nome; }
         internal List<Arco> Archi { get => archi; }
