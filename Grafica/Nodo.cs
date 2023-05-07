@@ -12,23 +12,26 @@ namespace Grafica
         static int index;
         string nome;
         List<Arco> archi;
-        List<Riga> camminominimo;
+        List<Riga> listaRighe;
         Point centro;
         public Nodo(Point centro)
         {
             this.centro = centro;
+            listaRighe = new List<Riga>();            
             archi = new List<Arco>();
-            index++;
             nome = index.ToString();
+            index++;
+            
+        }
+
+        public Nodo()
+        {
+            listaRighe = new List<Riga>();
         }
 
         public string Nome { get => nome; }
         internal List<Arco> Archi { get => archi; }
-        internal List<Riga> CamminoMinimo()
-        {
-            Grafo g = new Grafo(this);
-
-            return camminominimo;
-        }
+        internal List<Riga> ListaRighe { get => listaRighe; set => listaRighe = value; }
+        public Point Centro { get => centro; set => centro = value; }
     }
 }

@@ -17,7 +17,6 @@ namespace Grafica
         Label l;
         List<Point> centri;
         List<Punti> linee;
-        List<Riga> righe;
         Point p1;
         Point p2;
         Grafo grafo;
@@ -33,12 +32,11 @@ namespace Grafica
             penna = new Pen(Color.Black, 1);
             disegnaCerchio = false;
             raggio = 10;
-            distanza = 20;
+            distanza = 15;
             centri = new List<Point>();
             buttonCerchio = true;
             buttonLinea = false;
             linee = new List<Punti>();
-            righe = new List<Riga>();
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
@@ -49,7 +47,7 @@ namespace Grafica
                 foreach (Point p in centri)
                 {
                     foglio.DrawEllipse(penna, p.X, p.Y, 1, 1);
-                    foglio.DrawEllipse(penna, p.X - raggio, p.Y - raggio, raggio * 2, raggio * 2);                    
+                    foglio.DrawEllipse(penna, p.X - raggio, p.Y - raggio, raggio * 2, raggio * 2);
                 }
                 for (int i = 0; i < linee.Count; i++)
                 {
@@ -60,12 +58,12 @@ namespace Grafica
 
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
-            
+            Nodo n;
+
             bool distanzaOK = true;
             if (buttonCerchio)
             {
-                Nodo n;
-                l = new Label();                
+                l = new Label();
                 if (centri.Count != 0 && !centri.Contains(e.Location))
                 {
                     for (int i = 0; i < centri.Count; i++)
@@ -88,12 +86,14 @@ namespace Grafica
                     centri.Add(e.Location);
                     n = new Nodo(e.Location);
                     ScriviLabel(n, e);
-                    grafo = new Grafo(n);
-                   
+                    grafo = new Grafo();
+                    grafo.Add(n);
+
                 }
             }
             else if (buttonLinea == true)
             {
+
                 if (p1 != p2)
                 {
                     for (int i = 0; i < centri.Count; i++)
@@ -102,8 +102,12 @@ namespace Grafica
                         {
                             p2.X = centri[i].X;
                             p2.Y = centri[i].Y;
-                            linee.Add(new Punti(p1, p2, new Riga(new Nodo(p1).Nome, new Nodo(p2).Nome, (int)Math.Sqrt(Math.Pow(p2.X - p1.X, 2) + Math.Pow(p2.Y - p1.Y, 2)))));                            
-                            p1 = p2;
+                            Riga r = new Riga(grafo.Nodi.Find(x => x.Centro == p1).Nome, grafo.Nodi.Find(x => x.Centro == p2).Nome, (int)Math.Sqrt(Math.Pow(p2.X - p1.X, 2) + Math.Pow(p2.Y - p1.Y, 2)));
+                            linee.Add(new Punti(p1, p2, r));
+                            grafo.Nodi.Find(x => x.Centro == p1).ListaRighe.Add(r);
+                            p1 = new Point();
+                            p2 = new Point();
+
                         }
                     }
                 }
@@ -154,9 +158,19 @@ namespace Grafica
             l.Text = n.Nome;
             l.Location = e.Location;
             l.AutoSize = true;
-            l.Font = new Font("Calibri", 12);
-            l.ForeColor = Color.Black;            
+            l.Font = new Font("Calibri", 10);
+            l.ForeColor = Color.Black;
             this.Controls.Add(l);
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            List<Riga> camminoMinimo = grafo.CamminoMinimo(grafo.Nodi.Find(x => x.Nome == textBox1.Text));
+
+            foreach (Riga r in camminoMinimo)
+            {
+                MessageBox.Show("distanza minima da " + grafo.Nodi.Find(x => x.Nome == textBox1.Text).Nome + " a " + r.A + " costa: " + r.Costo);
+            }
         }
     }
 }
